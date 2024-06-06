@@ -27,12 +27,15 @@ public class Main {
 
         do {
             System.out.println("Введите название товара:");
-            String name = scanner.nextLine();
+            String name;
+            while ((name = scanner.nextLine()).isEmpty()) {
+                System.out.println("Вы ничего не ввели.");
+            }
             System.out.println("Введите цену товара:");
             double price;
             while (scanner.hasNext()) {
-                if (!scanner.hasNextDouble() || scanner.hasNextInt()) {
-                    System.out.println("Ввод должен быть дробным числом.");
+                if (!scanner.hasNextDouble()) {
+                    System.out.println("Ввод должен быть либо целым числом, либо дробным.");
                     scanner.nextLine();
                 } else {
                     price = scanner.nextDouble();
